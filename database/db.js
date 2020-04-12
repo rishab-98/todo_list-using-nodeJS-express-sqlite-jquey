@@ -4,11 +4,11 @@ const db = new Sequelize({
 
     dialect: 'sqlite',
   
-    storage: __dirname + '/test.db',
+    storage: __dirname + '/final.db',
   
   })
 
-  const Tasks = db.define('todo_list', {
+  const Tasks = db.define('task_list', {
 
     id: {
   
@@ -33,6 +33,10 @@ const db = new Sequelize({
       type: Sequelize.STRING
   
     },
+    Notes:{
+        type: Sequelize.TEXT
+    },
+
     Due_Date: {
   
         type: Sequelize.DATE,
