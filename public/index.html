@@ -1,13 +1,139 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
         <title>
             TODO List
         </title>
+
     </head>
     <body>
-        <h1>
-            ToDO List
-        </h1>
+        <h1 align="center">ToDO List</h1>
+<hr>
+       
+<div class="tasks">
+<div class="container">
+         
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button type="button" id="b1" class="btn btn-outline-primary btn-lg">Sort By Due Date</button>
+            <button type="button" id="b2" class="btn btn-outline-primary btn-lg">Sort By Status</button>
+            <button type="button" id="b2" class="btn btn-outline-primary btn-lg">Sort By Priority</button>
+
+          </nav>
+        
+          <br>
+          <button type="button" class="btn btn-outline-secondary btn-sm">Descending</button><br>
+        </div>
+   <br>
+ <div class="card text-center">
+    <div class="card-header">
+     {Title}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{Due Date}</h5>
+      <p class="card-text">{Description} With supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">{Priority}</p><p class="card-text">{Status}</p>
+    </div>
+    <div class="card-footer text-muted">
+        <button type="submit" class="btn btn-primary">SHow Notes</button>
+        <div class="display">
+        <p class="notes">Notes are <br>herekjwFKAWHM<br> KJDJKFF HKSDHKDHK BDDH
+            Sfhllkf
+            akjdkdkdhfdl
+            dkfdfhdkhi
+        </p>
+        <form>
+        Add Notes: <input type="text" class="text">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+  </div>
+  <br>
+
+  <div class="card text-center">
+    <div class="card-header">
+     {Title}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{Due Date}</h5>
+      <p class="card-text">{Description} With supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text">{Priority}</p><p class="card-text">{Status}</p>
+    </div>
+    <div class="card-footer text-muted">
+        <button type="submit" class="btn btn-primary">SHow Notes</button>
+        <div class="display">
+        <p class="notes">Notes are <br>herekjwFKAWHM<br> KJDJKFF HKSDHKDHK BDDH
+            Sfhllkf
+            akjdkdkdhfdl
+            dkfdfhdkhi
+        </p>
+        <form>
+        Add Notes: <input type="text" class="text">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    </div>
+  </div>
+</div>
+<br>
+
+<div class="newTask">
+  <h3 align="center"> Add Tasks Here</h3>
+  <br>
+  <hr>
+  <form>
+      <div class="form-row">
+        <div class="col-md-6">
+          <label for="text">Title</label>
+          <input type="text" required class="form-control" id="title" name="title" placeholder="Enter Title">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Status">Status</label>
+          <input type="text" class="form-control" readonly id="status" value="Incomplete">
+         
+        </div>
+      <div class="form-group col-md-6">
+        <label for="Date">Due Date</label>
+        <input type="date" class="form-control" required id="date" placeholder="14-04-2020">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="Priority">Priority</label>
+          <input type="text" class="form-control" id="priority" placeholder="medium">
+        </div>
+
+
+              <div class="form-group col-md-6">
+          <label for="Description">Description</label>
+          <input type="text" class="form-control" id="description" placeholder="Description">
+        </div>
+        </div>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      
+    </form>
+</div>
+
+<script>
+    var coll = document.getElementsByClassName("btn btn-primary");
+    var i;
+    
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+    </script>
     </body>
 </html>

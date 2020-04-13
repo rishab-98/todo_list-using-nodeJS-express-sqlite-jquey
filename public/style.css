@@ -1,0 +1,29 @@
+body {
+    background-color: lightblue;
+  }
+
+#b1,#b2{
+    margin-left:70px;
+    margin-right:70px;
+}
+.btn btn-primary {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  .btn btn-primary:hover {
+    background-color: #555;
+  }
+  
+  .display {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
