@@ -19,7 +19,9 @@ todos=[]
 
 route.post('/', (req, res)=>{
     console.log(todos[0])
+    console.log("hi")
     Tasks.create({
+        
         Title: req.body.title,
         Description: req.body.description,
         Due_Date: req.body.date,

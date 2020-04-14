@@ -30,7 +30,9 @@ const db = new Sequelize({
   
     Description: {
   
-      type: Sequelize.STRING
+      type: Sequelize.STRING,
+  
+
   
     },
     Notes:{
@@ -56,19 +58,12 @@ const db = new Sequelize({
   
         type: Sequelize.STRING,
     
-        defaultValue: "medium",
+   
     
       },
   
   })
   
-  console.log("successful")
-  db.sync()
-
-  .then(() => {
-
-    console.log('db works')
-  })
   module.exports = {
   
       db, Tasks
