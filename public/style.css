@@ -1,11 +1,21 @@
 body {
-    background-color: lightblue;
+    background-color: rgb(191, 230, 173);
+   
+  }
+  h1{
+    font-family:Arial, Helvetica, sans-serif;
+
+   color: blue;
   }
 
-#b1,#b2{
+#b1,#b2,#b3,#b10{
     margin-left:70px;
-    margin-right:70px;
+    margin-right:40px;
 }
+/* #b4,#b5,#b6{
+  width:100px;
+  height:40px;
+} */
 .btn btn-primary {
     background-color: #777;
     color: white;
@@ -29,7 +39,61 @@ body {
     background-color: #f1f1f1;
   }
 
-  #search{
-    margin-left: 150px;
-    float: right;
+ 
+
+  #box{
+    background-color: cyan;
+    color:red;
+    height:100px;
+    margin:50px;
   }
+  #navbar{
+    background-color: rgb(221, 128, 240);
+    width:100%;
+  }
+
+ #heading{
+   margin: 30px 10px;
+   display: block;
+ }
+
+
+ #TaskList{
+   margin:40px;
+ }
+
+
+ .form-row{
+   width:100%;
+   text-align: center;
+ }
+ #simple{
+   margin-left: 45%;
+   margin-top: 50px;
+   width:150px;
+ 
+ }
+ .newTask{
+   background-color: lightblue;
+   height:500px;
+ }
+ #new{
+   margin-top: 100px;
+ }
+ label{
+   font-size: 20px;;
+ }
+ .card-body{
+   background-color: rgb(190, 200, 243)
+ }
+ #b4, #b5, #b6{
+   margin-left:50px;
+   margin-right:50px;
+ }
+ #id{
+   margin-left:100px;
+   width:300px;
+ }
+ #hide{
+   display:none;
+ }

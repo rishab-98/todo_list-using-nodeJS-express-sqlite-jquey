@@ -1,30 +1,28 @@
 function fetchTasks(done){
     $.get('/todos', function(data){
         done(data);
-
     })
 }
-$(function(){
 
+$(function(){
     let TaskList = $('#TaskList')
-  
     fetchTasks(function(products){
         TaskList.empty()
+        console.log(products)
         for(product of products){
-           
+          // console.log(product.Notes)
             TaskList.append(createProductCard(product))
-            
         }
         collapse()
-        
     })
-    
 })
 
 function createProductCard (product){
+    console.log(product.Notes)
+    //hello(product.Notes)
     return $(`<div class="card text-center">
     <div class="card-header">
-        <b>${product.Title}</b>
+        <b>Title: ${product.Title}</b>
     </div>
    <div class="card-body">
        <h5 class="card-title">${product.Due_Date}</h5>
@@ -32,27 +30,25 @@ function createProductCard (product){
        <p class="card-text"><b>Priority: </b>${product.Priority}</p><p class="card-text"><b>Status: </b>${product.Status}</p>
     </div>
    <div class="card-footer text-muted">
-         <button type="submit"  class="btn btn-primary">Show Notes</button>
+   <p id="hide">${product.id}</p>
+         <button type="submit" class="btn btn-primary">Show Notes</button>
           <div class="display">
-               <p class="notes">${product.Notes}
+               <p><b>Notes: </b><span id="notes">${product.Notes}</span>
               </p>
               <form>
-                   Add Notes: <input type="text" class="text">
-                  <button type="submit" class="btn btn-outline-primary">Submit</button>
+                   Add Notes: <input id="enterNote" type="text" class="text">
+                  <button  type="submit" onclick="addNotes()" class="updateNotes">Submit</button>
               </form>
           </div>
   </div>
 
-</div><br><hr>`)
+</div><br><hr><br>`)
 }
 
-
 function collapse(){
-    
     var coll = document.getElementsByClassName("btn btn-primary");
     let i;
 for (i = 0; i < coll.length; i++) {
-    
     coll[i].addEventListener("click", function() {
      this.classList.toggle("active");
     var content = this.nextElementSibling;

@@ -7,7 +7,6 @@ route.get('/', (req, res)=>{
 Tasks.findAll()
     .then((todo_list)=>{
         res.status(200).send(todo_list)
-    
     })
     .catch((err)=>{
         res.status(500).send({
@@ -15,7 +14,7 @@ Tasks.findAll()
         })
     })
 })
-todos=[]
+
 
 route.post('/', (req, res)=>{
     console.log(todos[0])
@@ -85,9 +84,9 @@ route.patch('/:id', function (req, res, next) {
     where: {
         id: req.params.id //array
     },
-    attributes: ['notes'], //object
-}).then(function (list) {
-    res.status(200).json(list);
+    attributes: ['Notes'], //object
+}).then(function (listNotes) {
+    res.status(201).json(listNotes);
 })
    })
 
