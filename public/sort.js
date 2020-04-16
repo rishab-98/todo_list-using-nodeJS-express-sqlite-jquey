@@ -52,7 +52,7 @@ function sortByPriority(fetchedData)
       apriority=a.Priority.toLowerCase()
       bpriority=b.Priority.toLowerCase()
      
-      return ((apriority=='medium' && bpriority=='low') ? 1 : (bpriority=='medium' && apriority=='low')  ? -1 : 0);
+      return ((apriority=='medium' && bpriority=='low') ? -1 : (bpriority=='medium' && apriority=='low')  ? 1 : 0);
        
     })
     taskList.empty()
@@ -66,12 +66,12 @@ function sortByPriority(fetchedData)
 } 
 
 
-function sortByNewer(fetchedData)
+function sortByRecentDate(fetchedData)
 {
     let taskList=$('#TaskList')
     fetchedData.sort(function(a,b)
     {
-      return new Date(a.Due_Date) - new Date(b.Due_Date);
+      return new Date(b.Due_Date) - new Date(a.Due_Date);
        
     })
     taskList.empty()
@@ -85,12 +85,12 @@ function sortByNewer(fetchedData)
 } 
 
 
-function sortByOlder(fetchedData)
+function sortByOlderDate(fetchedData)
 {
   let taskList=$('#TaskList')
   fetchedData.sort(function(a,b)
   {
-    return new Date(b.Due_Date) - new Date(a.Due_Date);
+    return new Date(a.Due_Date) - new Date(b.Due_Date);
      
   })
   taskList.empty()
