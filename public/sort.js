@@ -1,109 +1,104 @@
-function sortByPriority(fetchTasks)
+function sortById(fetchedData)
 {
+  console.log(fetchedData)
     let taskList=$('#TaskList')
-    fetchTasks.sort(function(a,b)
+    taskList.empty()
+    for(task of fetchedData)
     {
-      
-      taskList.empty()
-      apriority=a.priority.toLowerCase()
-      bpriority=b.priority.toLowerCase()
-      return ((apriority=='high') ? 1 : (bpriority=='high') ? -1 : 0);
+       taskList.append(createProductCard(task))
+    }
+    collapsible()
+    updateNote()
+}
+
+
+function sortByStatus(fetchedData)
+{ console.log("status")
+    let TaskList=$('#TaskList')
+    fetchedData.sort(function(a,b)
+    {
+      astatus=a.Status.toLowerCase()
+      bstatus=b.Status.toLowerCase()
+      return ((astatus=='incomplete') ? -1 : (bstatus=='incomplete') ? 1 : 0);
        
     })
+    TaskList.empty()
+    for(task of fetchedData)
+    {
+          TaskList.append(createProductCard(task))
+    }
+    collapsible()
+    updateNote()
+
+   
+} 
+
+function sortByPriority(fetchedData)
+{
+    let taskList=$('#TaskList')
+    fetchedData.sort(function(a,b)
+        {
+          
+       taskList.empty()
+         apriority=a.Priority.toLowerCase()
+       bpriority=b.Priority.toLowerCase()
+       return ((apriority=='high') ? -1 : (bpriority=='high') ? 1 : 0);
+           
+         })
+    fetchedData.sort(function(a,b)
+    {
+      
+      
+      apriority=a.Priority.toLowerCase()
+      bpriority=b.Priority.toLowerCase()
+     
+      return ((apriority=='medium' && bpriority=='low') ? 1 : (bpriority=='medium' && apriority=='low')  ? -1 : 0);
+       
+    })
+    taskList.empty()
     for(task of fetchedData)
     {
           taskList.append(createProductCard(task))
     }
     
-   
-} 
-
-function sortById(fetchedData)
-{
-    let taskList=$('#taskList')
-    taskList.empty()
-    for(task of fetchedData)
-    {
-       taskList.append(showNewTask(task))
-    }
-    
-}
-
-
-// function sortByStatus(fetchedData)
-// {
-//     let taskList=$('#taskList')
-//     fetchedData.sort(function(a,b)
-//     {
-      
-      
-//       astatus=a.status.toLowerCase()
-//       bstatus=b.status.toLowerCase()
-//       return ((astatus=='incomplete') ? -1 : (bstatus=='incomplete') ? 1 : 0);
-       
-//     })
-//     taskList.empty()
-//     for(task of fetchedData)
-//     {
-//           taskList.append(showNewTask(task))
-//     }
-    
-   
-// } 
-
-function sortByStatus(fetchedData)
-{
-    let taskList=$('#taskList')
-    fetchedData.sort(function(a,b)
-    {
-      
-      
-      astatus=a.status.toLowerCase()
-      bstatus=b.status.toLowerCase()
-      return ((astatus=='incomplete') ? -1 : (bstatus=='incomplete') ? 1 : 0);
-       
-    })
-    taskList.empty()
-    for(task of fetchedData)
-    {
-          taskList.append(showNewTask(task))
-    }
-    
-   
+    collapsible()
+    updateNote()
 } 
 
 
 function sortByNewer(fetchedData)
 {
-    let taskList=$('#taskList')
+    let taskList=$('#TaskList')
     fetchedData.sort(function(a,b)
     {
-      return new Date(a.date) - new Date(b.date);
+      return new Date(a.Due_Date) - new Date(b.Due_Date);
        
     })
     taskList.empty()
     for(task of fetchedData)
     {
-          taskList.append(showNewTask(task))
+          taskList.append(createProductCard(task))
     }
-    
+    collapsible()
+    updateNote()
    
 } 
 
 
 function sortByOlder(fetchedData)
 {
-  let taskList=$('#taskList')
+  let taskList=$('#TaskList')
   fetchedData.sort(function(a,b)
   {
-    return new Date(b.date) - new Date(a.date);
+    return new Date(b.Due_Date) - new Date(a.Due_Date);
      
   })
   taskList.empty()
   for(task of fetchedData)
   {
-        taskList.append(showNewTask(task))
+        taskList.append(createProductCard(task))
   }
-    
+  collapsible()
+  updateNote()
    
 } 

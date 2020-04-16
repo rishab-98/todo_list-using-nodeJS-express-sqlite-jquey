@@ -17,7 +17,7 @@ Tasks.findAll()
 
 
 route.post('/', (req, res)=>{
-    console.log(todos[0])
+    
     console.log("hi")
     Tasks.create({
         
@@ -82,9 +82,9 @@ route.patch('/:id', function (req, res, next) {
    route.get('/:id/notes', function (req, res) {
    Tasks.findAll({
     where: {
-        id: req.params.id //array
+        id: req.params.id 
     },
-    attributes: ['Notes'], //object
+    attributes: ['Notes'], 
 }).then(function (listNotes) {
     res.status(201).json(listNotes);
 })
@@ -100,9 +100,13 @@ route.patch('/:id', function (req, res, next) {
     .then(function(rowsUpdated) {
       res.json(rowsUpdated)
     })
-    .catch(next)
+    .catch((err)=>{
+        res.status(500).send({
+            error:"Error occured"
+        })
    })
+})
 
 exports=module.exports={
     route
-};
+}

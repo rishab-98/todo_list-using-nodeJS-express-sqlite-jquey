@@ -46,11 +46,11 @@ function createUpdateArea(product){
 }
 
 function updateListItem(){
-    console.log("cvvdJVJ")
+   
     let date=$('#dueDate').val()
-    console.log(date)
+   
     let priority=$('#pri').val()
-    console.log(priority)
+   
     let id=$('#id')
     var c =id.val()
     var ele = document.getElementsByName('updateStatus'); 
@@ -59,9 +59,16 @@ function updateListItem(){
                 if(ele[i].checked) 
                 status=ele[i].value;
             } 
-            console.log(status)
+           
         sendUpdatedValue(c,date, priority, status)
         window.alert("updated successfully!")
+        fetchTasks(function(products){
+        
+            TaskList.empty()
+            fetchedData=products;
+          
+            sortById(fetchedData)
+        })
 }
 
 function sendUpdatedValue(id, date, priority, status){

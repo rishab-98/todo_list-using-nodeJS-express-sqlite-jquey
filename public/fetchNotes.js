@@ -9,7 +9,6 @@ function showNotes(){
 
 function fetchNotes(done){
     let notes=$('#id').val()
-    console.log(notes)
     $.get('/todos/'+ notes +'/notes', function(data){
        done(data);
     })

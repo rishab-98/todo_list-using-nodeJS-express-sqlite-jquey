@@ -1,25 +1,55 @@
+// Fetch All the Tasks 
 function fetchTasks(done){
     $.get('/todos', function(data){
         done(data);
     })
 }
 
+//FUnction which will execute with loading of page
 $(function(){
+
     let TaskList = $('#TaskList')
+
+    //Fetch Tasks Function
     fetchTasks(function(products){
         TaskList.empty()
-        console.log(products)
-        for(product of products){
-          // console.log(product.Notes)
-            TaskList.append(createProductCard(product))
-        }
-        collapse()
+        fetchedData=products;
+        console.log(fetchedData)
+        sortById(fetchedData)
     })
-})
 
+    // Code for setting default value of Date to Tomorrow
+    var currentdate = new Date();
+    currentdate.setDate(currentdate.getDate() + 1);
+    var tomorrow = currentdate.toJSON().slice(0,10);
+    document.getElementById('date').value = tomorrow
+
+    // On click functions for sorting
+
+        $('#b3').click(function()
+        {
+                sortByPriority(fetchedData)
+        })
+    
+        $('#b2').click(function()
+        {
+                sortByStatus(fetchedData)
+        })
+    
+        $('#b1').click(function()
+        {      
+            sortByRecentDate(fetchedData)
+        })
+        $('#b10').click(function()
+        {
+            sortByOlderDate(fetchedData)
+        })
+
+
+    })
+
+// This will craete Task Fields according to the number of tasks
 function createProductCard (product){
-    console.log(product.Notes)
-    //hello(product.Notes)
     return $(`<div class="card text-center">
     <div class="card-header">
         <b>Title: ${product.Title}</b>
@@ -33,19 +63,24 @@ function createProductCard (product){
    <p id="hide">${product.id}</p>
          <button type="submit" class="btn btn-primary">Show Notes</button>
           <div class="display">
-               <p><b>Notes: </b><span id="notes">${product.Notes}</span>
+          <form>
+         
+               <b>Notes: </b> <p id="hide">${product.id}</p><p>${product.Notes}
               </p>
-              <form>
-                   Add Notes: <input id="enterNote" type="text" class="text">
-                  <button  type="submit" onclick="addNotes()" class="updateNotes">Submit</button>
+              
+                   Add Notes: <input class="input" type="text" >
+                  <button  type="button"   class="updateNotes">Submit</button>
               </form>
+             
           </div>
   </div>
 
 </div><br><hr><br>`)
 }
 
-function collapse(){
+// This function will expand and hide Notes of each Task
+function collapsible(){
+
     var coll = document.getElementsByClassName("btn btn-primary");
     let i;
 for (i = 0; i < coll.length; i++) {

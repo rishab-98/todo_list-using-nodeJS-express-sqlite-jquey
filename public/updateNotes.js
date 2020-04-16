@@ -1,32 +1,45 @@
-    //fetch notes
-    //concatinate them 
-    // post notes
 
-function addNotes(){
-    console.log(notes)
-    var x= $("#enterNote").val()
+function updateNote(){
+var show = document.getElementsByClassName("updateNotes") 
 
-var z = document.getElementById("notes").innerHTML
-  console.log(z)
-   console.log(x)
-     document.getElementById("notes").innerHTML=z+" "+x
-     var note=z+" "+x
-     var id= document.getElementById("hide").innerHTML
-   
-     sendNewNote(id,note)
-        window.alert("updated successfully!")
-}                                 
+let i;
+for (i = 0; i < show.length; i++) {
 
-function sendNewNote(id, notes){
+   show[i].addEventListener("click", function() {
+       var input=this.previousElementSibling;
+       var note= input.previousElementSibling;
+       var id= note.previousElementSibling;
+      var ID = id.innerHTML
+      var finalNote
+     
+       finalNote=note.innerHTML + " " + input.value
+       console.log(note.innerHTML)
+       var ans=note.innerHTML
+       console.log("ans= "+ ans)
+       if(ans==null)
+       {
+        sendUpdatedNote(ID, input.value)
+       }else{
+        sendUpdatedNote(ID, finalNote)
+       }
+        
+        window.alert("Note updated")
+    })
+}
+}
+
+function sendUpdatedNote(id, finalNote){
+    console.log(finalNote)
     var item={
- notes:notes
+ notes:finalNote
     }
         return $.ajax({
             type: "Patch",
-            url: "/todos/"+id+"/notes",
+            url: "/todos/"+id + "/notes",
             data: JSON.stringify(item),
             dataType: "json",
             contentType: 'application/json; charset=utf-8'
         });
     }
-  
+
+
