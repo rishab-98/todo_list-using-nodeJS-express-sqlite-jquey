@@ -12,4 +12,4 @@ app.use('/todos', require('./routes').route);
 
 
 console.log("server running..")
-app.listen(9999)
+app.listen(process.env.PORT||9999)
