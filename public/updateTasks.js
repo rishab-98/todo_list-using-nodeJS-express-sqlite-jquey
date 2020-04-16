@@ -1,4 +1,5 @@
 function updateTask(){
+    console.log("hey")
     let area = $('#updateArea')
     fetchById(function(product){
         area.empty()
@@ -63,7 +64,7 @@ function updateListItem(){
         sendUpdatedValue(c,date, priority, status)
         window.alert("updated successfully!")
         fetchTasks(function(products){
-        
+        var TaskList = $("#TaskList")
             TaskList.empty()
             fetchedData=products;
           
